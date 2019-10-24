@@ -7,36 +7,37 @@
 //
 
 import Foundation
+import UIKit
 
 
 enum CardMemberError: Error {
     case invalidNumberOfShapes(numShapes: Int)
-    case invalidShape(shape: String)
-    case invalidShade(shade: String)
-    case invalidColor(color: String)
+    case invalidShape(shape: Shapes)
+    case invalidShade(shade: Shades)
+    case invalidColor(color: UIColor)
 }
 
-enum shapes: String {
+enum Shapes: String, CaseIterable {
     case triangle = "▲"
     case circle = "⬤"
     case square = "⏹"
 }
 
-enum shades {
-    case solid
-    case striped
-    case open
+enum Shades: Float, CaseIterable {
+    case solid = 1.0
+    case striped = 0.15
+    case open = 0.0
 }
 
 class Card {
     var numberOfShapes: Int
-    var shape: String
-    var shading: String
-    var color: String
+    var shape: Shapes
+    var shading: Shades
+    var color: UIColor
     
     // This function sets the shape of the card
-    private func setShape(shp: String) throws {
-        if shp != "▲" || shp != "⬤" || shp != "⏹" {
+    private func setShape(shp: Shapes) throws {
+        if shp != Shapes.triangle || shp != Shapes.circle || shp != Shapes.square {
             throw CardMemberError.invalidShape(shape: shp)
         }
         else {
@@ -45,8 +46,8 @@ class Card {
     }
     
     // This function sets the color of the card
-    private func setColor(col: String) throws {
-        if col != "Red" || col != "Green" || col != "Blue" {
+    private func setColor(col: UIColor) throws {
+        if col != UIColor.Colors.Red || col != UIColor.Colors.Green || col != UIColor.Colors.Blue {
             throw CardMemberError.invalidColor(color: col)
         }
         else {
@@ -55,8 +56,8 @@ class Card {
     }
     
     // This function sets the shade of the card
-    private func setShade(shade: String) throws {
-        if shade != "Solid" || shade != "Striped" || shade != "Open" {
+    private func setShade(shade: Shades) throws {
+        if shade != Shades.solid || shade != Shades.striped || shade != Shades.open {
             throw CardMemberError.invalidShade(shade: shade)
         }
         else {
@@ -75,7 +76,7 @@ class Card {
     }
     
     
-    init(numShapes: Int = 0, shp: String = "", shade: String = "", col: String = "")
+    init(numShapes: Int, shp: Shapes, shade: Shades, col: UIColor)
     {
         numberOfShapes = numShapes
         shape = shp
@@ -116,4 +117,12 @@ class Card {
         }
     }
     
+}
+
+extension UIColor {
+    struct Colors{
+        static var Red: UIColor  { return UIColor(red: 1, green: 0, blue: 0, alpha: 1) }
+        static var Green: UIColor { return UIColor(red: 0, green: 1, blue: 0, alpha: 1) }
+        static var Blue: UIColor { return UIColor(red: 0, green: 0, blue: 1, alpha: 1) }
+    }
 }

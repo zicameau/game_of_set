@@ -9,6 +9,21 @@
 import Foundation
 
 class Set {
-    var deck = [Card]()
+    var deck: Deck
+    var hand: Array<Card>
+    
+    init()
+    {
+        deck = Deck()
+        hand = self.startingHand()
+    }
+    
+    func startingHand() -> [Card]{
+        var hand: Array<Card>
+        for _ in 0...12 {
+            hand.append(deck.pullCard() ?? Card)
+        }
+        return hand
+    }
     
 }
