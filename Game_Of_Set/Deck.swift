@@ -13,6 +13,7 @@ struct Deck {
     var cards: Array<Card>
     
     init() {
+        cards = []
         for shade in Shades.allCases {
             for shape in Shapes.allCases {
                 for i in 1...3 {
