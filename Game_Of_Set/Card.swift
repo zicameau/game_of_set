@@ -75,6 +75,56 @@ class Card {
         }
     }
     
+    // Returns true if the colors are the same, otherwise return false
+    func colorSame(otherCard: Card) -> Bool {
+        if otherCard.color == self.color {
+            return true
+        }
+        else {
+            return false
+        }
+    }
+    
+    // if the shapes are the same then return true, otherwise return false
+    func shapeSame(otherCard: Card) -> Bool {
+        if otherCard.shape == self.shape {
+            return true
+        }
+        else {
+            return false
+        }
+    }
+    
+    // if the shades are the same then return true, otherwise false
+    func shadeSame(otherCard: Card) -> Bool {
+        if otherCard.shading == self.shading {
+            return true
+        }
+        else {
+            return false
+        }
+    }
+    
+    // If the number of shapes is the same then return true, otherwise false
+    func numShapesSame(otherCard: Card) -> Bool {
+        if otherCard.numberOfShapes == self.numberOfShapes{
+            return true
+        }
+        else {
+            return false
+        }
+    }
+    
+    class func checkColorsSet(firstCard: Card, secondCard: Card, thirdCard: Card) -> Bool {
+        if (firstCard.colorSame(otherCard: secondCard)) && (firstCard.colorSame(otherCard: thirdCard)) {
+            return true
+        }
+        else if !(firstCard.colorSame(otherCard: secondCard)) && !(firstCard.colorSame(otherCard: thirdCard)) && !(secondCard.colorSame(thirdCard)) {
+            return true
+        }
+    }
+    
+    
     
     init(numShapes: Int, shp: Shapes, shade: Shades, col: UIColor)
     {
