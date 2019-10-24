@@ -11,6 +11,8 @@ import Foundation
 class Set {
     var deck: Deck
     var hand: Array<Card>
+    var matchedCards: Array<Card>
+    var score: Int
     var selectedCards: Array<Int>
     var numCardsSelected: Int { // represents the number of cards that are currently selected
         get {
@@ -33,9 +35,10 @@ class Set {
         deck = Deck()
         hand = []
         selectedCards =  [-1, -1, -1] // -1 represents 0 in this case because 0 is an element in the array
-
+        score = 0
+        matchedCards = []
         
-        for _ in 0...12 {
+        for _ in 0...11 {
             if let topCard = deck.pullCard() {
                 hand.append(topCard)
             }
@@ -72,7 +75,7 @@ class Set {
     // Returns false if the index has already been selected
     // returns true if not
     func checkCardNotAlreadySelected(indexIntoHand: Int) -> Bool {
-        for i in 0...self.selectedCards.count {
+        for i in 0...self.selectedCards.count-1{
             if self.selectedCards[i] == indexIntoHand {
                 return false
             }
@@ -83,15 +86,21 @@ class Set {
     // if its a valid index into hand and the max number of cards has not been reached and the card is not already selected
     // then return true. Otherwise return false.
     func selectCard(indexIntoHand: Int) -> Bool {
-        if checkValidHandIndex(indexIntoHand: indexIntoHand) &&  self.numCardsSelected < 3 &&
+        if checkValidHandIndex(indexIntoHand: indexIntoHand) &&
             checkCardNotAlreadySelected(indexIntoHand: indexIntoHand) {
-            for i in 0...self.selectedCards.count{
-                if self.selectedCards[i] == -1 {
-                    self.selectedCards[i] = indexIntoHand
-                    return true
+            if self.numCardsSelected < 3 {
+                for i in 0...self.selectedCards.count-1{
+                    if self.selectedCards[i] == -1 {
+                        self.selectedCards[i] = indexIntoHand
+                        return true
+                    }
                 }
+                return false
             }
-            return false
+            else {
+                self.selectedCards[2] = indexIntoHand
+                return true
+            }
         }
         return false
     }
@@ -108,25 +117,50 @@ class Set {
         return false
     }
     
+    // Removes the selected cards from the hand when told to do so. Checks if the selected cards are a set before
+    // removing them. Once check returns true it removes them and appends them to the matchedCards array.
+    func removeSetFromHand() -> Bool {
+        if checkIfSelectedCardsAreSet() {
+            for i in 0...2{
+                matchedCards.append(hand.remove(at: selectedCards[i]))
+            }
+            return true
+        }
+        else {
+            return false
+        }
+    }
+    
+    // Checks if the currently three selected cards are a set or not. If they are then we
+    // add them to the array of matchedCards and return true and if they are not then we return false
     func checkIfSelectedCardsAreSet() -> Bool {
-        // check if cards all have the same color or all different colors
-        if checkColors() {
+        
+        var checkFlag = true
+        
+        if numCardsSelected == 3 {
             
+            if !Card.checkColorsSet(firstCard: hand[selectedCards[0]], secondCard: hand[selectedCards[1]], thirdCard: hand[selectedCards[2]]) {
+                checkFlag = false
+            }
+            
+            if !Card.checkShadesSet(firstCard: hand[selectedCards[0]], secondCard: hand[selectedCards[1]], thirdCard: hand[selectedCards[2]]) {
+                checkFlag = false
+            }
+            
+            if !Card.checkShapesSet(firstCard: hand[selectedCards[0]], secondCard: hand[selectedCards[1]], thirdCard: hand[selectedCards[2]]) {
+                checkFlag = false
+            }
+            
+            if !Card.checknumShapesSet(firstCard: hand[selectedCards[0]], secondCard: hand[selectedCards[1]], thirdCard: hand[selectedCards[2]]) {
+                checkFlag = false
+            }
+            
+        }
+        else {
+            checkFlag = false
         }
         
-        // check if cards all have the same shape or all different shapes
-        if checkShapes() {
-            
-        }
-        // check if cards all have the same shade or all different shades
-        if checkShades() {
-            
-        }
-        
-        // check if cards all have the same number of shapes or all different number of shapes
-        if checkNumShapes() {
-            
-        }
+        return checkFlag
     }
     
 }

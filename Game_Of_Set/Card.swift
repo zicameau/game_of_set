@@ -128,7 +128,41 @@ class Card {
     }
     
     
+    class func checkShadesSet(firstCard: Card, secondCard: Card, thirdCard: Card) -> Bool {
+        if (firstCard.shadeSame(otherCard: secondCard)) && (firstCard.shadeSame(otherCard: thirdCard)) {
+            return true
+        }
+        else if !(firstCard.shadeSame(otherCard: secondCard)) && !(firstCard.shadeSame(otherCard: thirdCard)) && !(secondCard.shadeSame(otherCard: thirdCard)) {
+            return true
+        }
+        else {
+            return false
+        }
+    }
     
+    class func checkShapesSet(firstCard: Card, secondCard: Card, thirdCard: Card) -> Bool {
+        if (firstCard.shapeSame(otherCard: secondCard)) && (firstCard.shapeSame(otherCard: thirdCard)) {
+            return true
+        }
+        else if !(firstCard.shapeSame(otherCard: secondCard)) && !(firstCard.shapeSame(otherCard: thirdCard)) && !(secondCard.shapeSame(otherCard: thirdCard)) {
+            return true
+        }
+        else {
+            return false
+        }
+    }
+    
+    class func checknumShapesSet(firstCard: Card, secondCard: Card, thirdCard: Card) -> Bool {
+        if (firstCard.numShapesSame(otherCard: secondCard)) && (firstCard.numShapesSame(otherCard: thirdCard)) {
+            return true
+        }
+        else if !(firstCard.numShapesSame(otherCard: secondCard)) && !(firstCard.numShapesSame(otherCard: thirdCard)) && !(secondCard.numShapesSame(otherCard: thirdCard)) {
+            return true
+        }
+        else {
+            return false
+        }
+    }
     
     
     init(numShapes: Int, shp: Shapes, shade: Shades, col: UIColor)
