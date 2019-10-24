@@ -119,10 +119,15 @@ class Card {
         if (firstCard.colorSame(otherCard: secondCard)) && (firstCard.colorSame(otherCard: thirdCard)) {
             return true
         }
-        else if !(firstCard.colorSame(otherCard: secondCard)) && !(firstCard.colorSame(otherCard: thirdCard)) && !(secondCard.colorSame(thirdCard)) {
+        else if !(firstCard.colorSame(otherCard: secondCard)) && !(firstCard.colorSame(otherCard: thirdCard)) && !(secondCard.colorSame(otherCard: thirdCard)) {
             return true
         }
+        else {
+            return false
+        }
     }
+    
+    
     
     
     
