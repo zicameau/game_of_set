@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		84817723232C8992007C16CA /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84817722232C8992007C16CA /* Deck.swift */; };
-		84AF87F4236136ED00AC7088 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84AF87F2236136ED00AC7088 /* Main.storyboard */; };
 		84AF87F82361416500AC7088 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AF87F72361416500AC7088 /* CollectionViewController.swift */; };
+		84AF88352362778200AC7088 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84AF88332362778200AC7088 /* Main.storyboard */; };
 		84FE78042328B0650086A3DE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FE78032328B0650086A3DE /* AppDelegate.swift */; };
 		84FE780B2328B0680086A3DE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84FE780A2328B0680086A3DE /* Assets.xcassets */; };
 		84FE780E2328B0680086A3DE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84FE780C2328B0680086A3DE /* LaunchScreen.storyboard */; };
@@ -38,8 +38,8 @@
 
 /* Begin PBXFileReference section */
 		84817722232C8992007C16CA /* Deck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deck.swift; sourceTree = "<group>"; };
-		84AF87F3236136ED00AC7088 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = ../../../Desktop/the_ultimate_game_of_set/the_ultimate_game_of_set/Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		84AF87F72361416500AC7088 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CollectionViewController.swift; path = "Support Files/CollectionViewController.swift"; sourceTree = "<group>"; };
+		84AF88342362778200AC7088 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = ../../../Desktop/atempproject/atempproject/Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		84FE78002328B0650086A3DE /* Game_Of_Set.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Game_Of_Set.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84FE78032328B0650086A3DE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84FE780A2328B0680086A3DE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -105,9 +105,9 @@
 			children = (
 				84FE78312328B0810086A3DE /* Support Files */,
 				84817722232C8992007C16CA /* Deck.swift */,
+				84AF88332362778200AC7088 /* Main.storyboard */,
 				84AF87F72361416500AC7088 /* CollectionViewController.swift */,
 				84FE78342328BA160086A3DE /* Card.swift */,
-				84AF87F2236136ED00AC7088 /* Main.storyboard */,
 				84FE78322328B8FE0086A3DE /* Set.swift */,
 				84FE780F2328B0680086A3DE /* Info.plist */,
 			);
@@ -246,7 +246,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84AF87F4236136ED00AC7088 /* Main.storyboard in Resources */,
+				84AF88352362778200AC7088 /* Main.storyboard in Resources */,
 				84FE780E2328B0680086A3DE /* LaunchScreen.storyboard in Resources */,
 				84FE780B2328B0680086A3DE /* Assets.xcassets in Resources */,
 			);
@@ -313,10 +313,10 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		84AF87F2236136ED00AC7088 /* Main.storyboard */ = {
+		84AF88332362778200AC7088 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				84AF87F3236136ED00AC7088 /* Base */,
+				84AF88342362778200AC7088 /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";

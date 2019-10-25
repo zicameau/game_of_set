@@ -62,6 +62,10 @@ class Set {
         return true
     }
     
+    func getNumCardsInHand() -> Int {
+        return hand.count
+    }
+    
     // checks to make sure the passed value is a valid index into the hand array
     func checkValidHandIndex(indexIntoHand: Int) -> Bool {
         if indexIntoHand < hand.count {
