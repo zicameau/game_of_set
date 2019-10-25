@@ -49,7 +49,7 @@ class Set {
         return hand
     }
     
-     // Deals three cards to the current hand
+     // Deals three cards to the current hand and returns true if it succeeded and false if not.
     func dealThree() -> Bool{
         for _ in 0...2 {
             if let topCard = deck.pullCard() {
@@ -111,6 +111,7 @@ class Set {
         for i in 0...selectedCards.count {
             if self.selectedCards[i] == indexIntoHand {
                 self.selectedCards[i] = -1
+                score -= 1
                 return true
             }
         }
@@ -119,14 +120,19 @@ class Set {
     
     // Removes the selected cards from the hand when told to do so. Checks if the selected cards are a set before
     // removing them. Once check returns true it removes them and appends them to the matchedCards array.
+    // If the cards are a set and we remove them, deal three more cards (according to the document)
+    
     func removeSetFromHand() -> Bool {
         if checkIfSelectedCardsAreSet() {
             for i in 0...2{
                 matchedCards.append(hand.remove(at: selectedCards[i]))
             }
+            self.dealThree()
+            score += 3
             return true
         }
         else {
+            score -= 4
             return false
         }
     }

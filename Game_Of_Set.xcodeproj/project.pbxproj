@@ -39,7 +39,7 @@
 /* Begin PBXFileReference section */
 		84817722232C8992007C16CA /* Deck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deck.swift; sourceTree = "<group>"; };
 		84AF87F3236136ED00AC7088 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = ../../../Desktop/the_ultimate_game_of_set/the_ultimate_game_of_set/Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		84AF87F72361416500AC7088 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
+		84AF87F72361416500AC7088 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CollectionViewController.swift; path = "Support Files/CollectionViewController.swift"; sourceTree = "<group>"; };
 		84FE78002328B0650086A3DE /* Game_Of_Set.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Game_Of_Set.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84FE78032328B0650086A3DE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84FE780A2328B0680086A3DE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -83,7 +83,6 @@
 		84FE77F72328B0650086A3DE = {
 			isa = PBXGroup;
 			children = (
-				84AF87F72361416500AC7088 /* CollectionViewController.swift */,
 				84FE78022328B0650086A3DE /* Game_Of_Set */,
 				84FE78172328B0680086A3DE /* Game_Of_SetTests */,
 				84FE78222328B0680086A3DE /* Game_Of_SetUITests */,
@@ -106,6 +105,7 @@
 			children = (
 				84FE78312328B0810086A3DE /* Support Files */,
 				84817722232C8992007C16CA /* Deck.swift */,
+				84AF87F72361416500AC7088 /* CollectionViewController.swift */,
 				84FE78342328BA160086A3DE /* Card.swift */,
 				84AF87F2236136ED00AC7088 /* Main.storyboard */,
 				84FE78322328B8FE0086A3DE /* Set.swift */,
