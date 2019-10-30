@@ -1,17 +1,16 @@
 //
-//  CollectionViewController.swift
-//  Game_Of_Set
+//  ViewController.swift
+//  SOCollectionViewDemo
 //
-//  Created by admin on 10/23/19.
+//  Created by admin on 10/26/19.
 //  Copyright © 2019 admin. All rights reserved.
 //
-// See this for more info https://guides.codepath.com/ios/Collection-View-Guide
 
 import UIKit
 
-private let reuseIdentifier = "Cell"
+private let reuseIdentifier = "collectionCell"
 
-class CollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class ViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
     var game = Set()
     
@@ -23,14 +22,29 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
 
         // Register cell classes
         self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        
+        self.collectionView.delegate = self
+        self.collectionView.dataSource = self
+        self.collectionView.allowsMultipleSelection = true
 
         // Do any additional setup after loading the view.
     }
 
+    // UICollectionViewDelegateFlowLayout functions
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
     {
-        return CGSize(width: 100.0, height: 100.0)
+        return CGSize(width: 75.0, height: 105.0)
+    }
+    
+    func collectionView(_: UICollectionView, layout: UICollectionViewLayout, minimumLineSpacingForSectionAt: Int) -> CGFloat {
+        return 1.0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 1.0
     }
     
     /*
@@ -53,32 +67,56 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return game.getNumCardsInHand()
+        return game.getHand().count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
         
+        // Current hand
+        var hand = game.getHand()
+        let card = hand[indexPath.item]
         
         
         let button = UIButton()
-        button.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
-        button.setTitle("Click Me", for: .normal)
-        button.setTitleColor(#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), for: .normal)
+        button.frame = CGRect(x: 0, y: 0, width: 75, height: 105)
+        button.setTitle(String(repeating: card.shape.rawValue, count: card.numberOfShapes), for: .normal)
+        button.setTitleColor(card.color, for: .normal)
         button.addTarget(self, action: #selector(self.pressButton(_:)), for: .touchUpInside)
-        cell.backgroundColor = UIColor.black
+        cell.backgroundColor = UIColor.white
+        
+        if cell.isSelected {
+            cell.layer.borderColor = UIColor.blue.cgColor
+            cell.layer.borderWidth = 3
+        }
+        else {
+            cell.layer.borderColor = UIColor.black.cgColor
+            cell.layer.borderWidth = 1
+        }
+        
+        
+        
         cell.addSubview(button)
-        
-      
-        
         
         
         return cell
     }
     
+    override func collectionView(_ collectionView: UICollectionView,
+                        didSelectItemAt indexPath: IndexPath)
+    {
+        game.selectCard(indexIntoHand: indexPath.item)
+        collectionView.selectItem(at: indexPath, animated: false, scrollPosition: <#T##UICollectionView.ScrollPosition#>)
+        
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        
+    }
+    
     @objc func pressButton(_ sender: UIButton)
     {
-        print("\(sender)")
+        
     }
 
     // MARK: UICollectionViewDelegate

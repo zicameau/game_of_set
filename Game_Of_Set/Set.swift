@@ -121,7 +121,6 @@ class Set {
         }
         return false
     }
-    
     // Removes the selected cards from the hand when told to do so. Checks if the selected cards are a set before
     // removing them. Once check returns true it removes them and appends them to the matchedCards array.
     // If the cards are a set and we remove them, deal three more cards (according to the document)
